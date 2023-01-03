@@ -1,0 +1,30 @@
+.configSection {
+    display: grid;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    margin: 0.25em;
+    padding: 0.25em;
+}
+
+.row {
+    padding: 0.5em;
+}
+
+.col-layout {
+    display: inline-flex;
+    align-content: baseline;
+    align-items: center;
+}
+
+.help-icon {
+    margin-left: 5px;
+}
+
+.help-icon > img {
+    max-width: 20px;
+    max-height: 20px;
+}
+
+.label-with-help {
+    display: inline;
+}
