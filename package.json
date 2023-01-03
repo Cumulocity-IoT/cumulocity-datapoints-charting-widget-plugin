@@ -1,0 +1,101 @@
+{
+  "name": "cumulocity-datapoints-charting-widget-plugin",
+  "version": "1.0.1-beta",
+  "description": "This is the Cumulocity module federation plugin. This plugin is to create charts showing data from one or more devices. You can create many chart types including line, spline, bar, radar, scatter and bubble.",
+  "scripts": {
+    "start": "c8ycli server --env.beta=true",
+    "build": "c8ycli build --env.mode=production",
+    "deploy": "c8ycli deploy",
+    "postinstall": "ngcc",
+    "prebuild": " gulp clean",
+    "postbuild": " gulp bundle"
+  },
+  "keywords": [],
+  "author": "Sheethal J R- Software AG, Global Presales",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@angular/animations": "14.0.6",
+    "@angular/cdk": "14.1.2",
+    "@angular/common": "14.0.6",
+    "@angular/compiler": "14.0.6",
+    "@angular/core": "14.0.6",
+    "@angular/forms": "14.0.6",
+    "@angular/platform-browser": "14.0.6",
+    "@angular/platform-browser-dynamic": "14.0.6",
+    "@angular/router": "14.0.6",
+    "@angular/upgrade": "14.0.6",
+    "@c8y/client": "1016.0.40",
+    "@c8y/ngx-components": "1016.0.40",
+    "@c8y/style": "1016.0.40",
+    "@ngx-translate/core": "14.0.0",
+    "rxjs": "~6.6.3",
+    "zone.js": "~0.11.7",
+    "@c8y/ng1-modules": "1016.0.40",
+    "@ng-select/ng-select": "^3.7.3",
+    "angular": "1.6.9",
+    "bollinger-bands": "^3.0.1",
+    "chart.js": "^2.9.4",
+    "chartjs-plugin-labels": "^1.1.0",
+    "compute-iqr": "^1.1.0",
+    "core-js": "^3.4.0",
+    "idb": "^6.0.0",
+    "lodash": "4.17.21",
+    "moment": "^2.29.1",
+    "moving-averages": "^4.0.5",
+    "ng2-charts": "^2.4.2",
+    "url-search-params-polyfill": "6.0.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "14.0.6",
+    "@angular/compiler-cli": "14.0.6",
+    "@angular/language-service": "14.0.6",
+    "@angular/localize": "14.0.6",
+    "@angular/service-worker": "14.0.6",
+    "@c8y/cli": "1016.0.40",
+    "@types/jest": "^28.1.6",
+    "@types/webpack": "^5.28.0",
+    "caniuse-lite": "1.0.30001237",
+    "css-loader": "3.5.3",
+    "del": "^6.1.1",
+    "file-loader": "^6.2.0",
+    "gulp": "^4.0.2",
+    "gulp-zip": "^5.0.1",
+    "html-loader": "4.1.0",
+    "jest": "^28.1.3",
+    "jest-preset-angular": "^12.2.0",
+    "ng-packagr": "^9.1.5",
+    "style-loader": "3.3.1",
+    "typescript": "4.7.4"
+  },
+  "c8y": {
+    "application": {
+      "name": "Datapoints Charting Widget Plugin",
+      "description": "Cumulocity Datapoints Charting Runtime Widget Plugin with module federation",
+      "contextPath": "cumulocity-datapoints-charting",
+      "key": "cumulocity-datapoints-charting-application-key",
+      "globalTitle": "Cumulocity Datapoints Charting Widget Plugin with Module Federation",
+      "tabsHorizontal": true,
+      "isPackage": true,
+      "noAppSwitcher": true,
+      "package": "plugin",
+      "requiredPlatformVersion": ">=1016.0.0",
+      "exports": [
+        {
+          "name": "Datapoints Charting Widget Plugin",
+          "module": "CumulocityDatapointsChartingWidgetModule",
+          "path": "./widget/cumulocity-datapoints-charting-widget/cumulocity-datapoints-charting-widget.module.ts",
+          "description": "Widget for displaying realtime measurement data in graphs (written by Software AG Global Pre-sales)"
+        }
+      ],
+      "remotes": {
+        "widget-plugin": [
+          "CumulocityDatapointsChartingWidgetModule"
+        ]
+      }
+    },
+    "cli": {}
+  },
+  "browserslist": [
+    "last 2 major versions"
+  ]
+}
