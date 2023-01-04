@@ -1,4 +1,4 @@
-.configSection {
+.dataPointConfigSection {
     display: grid;
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 4px;
@@ -6,25 +6,20 @@
     padding: 0.25em;
 }
 
-.row {
+.dataPointrow {
     padding: 0.5em;
 }
 
-.col-layout {
-    display: inline-flex;
-    align-content: baseline;
-    align-items: center;
-}
 
-.help-icon {
+.dataPointhelp-icon {
     margin-left: 5px;
 }
 
-.help-icon > img {
+.dataPointhelp-icon > img {
     max-width: 20px;
     max-height: 20px;
 }
 
-.label-with-help {
+.dataPointlabel-with-help {
     display: inline;
 }

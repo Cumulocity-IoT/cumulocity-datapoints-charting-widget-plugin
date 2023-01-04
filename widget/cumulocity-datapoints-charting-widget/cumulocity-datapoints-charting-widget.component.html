@@ -4,12 +4,6 @@
 
     <ng-container *ngIf="!widgetHelper.getChartConfig().multivariateplot">
         <div class="d-flex" style="flex-wrap: wrap;">
-            <!-- <button type="button" class="btn btn-link c8y-realtime" title="Toggle realtime" (click)="toggle()">
-                                    <span [ngClass]="realtimeState?'c8y-pulse active' : 'c8y-pulse inactive'"></span>
-                                    <span>Realtime</span>
-                                </button> -->
-            <!--mat-icon-button-->
-
             <button style="color:#1776BF;" type="button" class="button" (click)="refresh()"><i
                       [c8yIcon]="'refresh'"></i></button>
         </div>

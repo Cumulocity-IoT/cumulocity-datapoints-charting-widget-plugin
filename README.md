@@ -51,7 +51,7 @@ The Datapoint Charting Widget Plugin currently supports the following chart type
 
 ### Runtime Deployment?
 
--   This widget supports runtime deployment. Download the [Runtime Binary](https://github.com/SoftwareAG/cumulocity-datapoints-charting-widget-plugin/releases/download/1.0.1-beta/cumulocity-datapoints-charting-1.0.1-beta.zip).
+This Cumulocity Datapoint Charting Widget Plugin supports runtime deployment. Download the [Runtime Binary](https://github.com/SoftwareAG/cumulocity-datapoints-charting-widget-plugin/releases/download/1.0.1-beta/cumulocity-datapoints-charting-1.0.1-beta.zip).
 
 ## User guide
 
@@ -171,11 +171,11 @@ The above chart is a basic line chart, but you can use the ability to plot data 
 **Instructions**
 1. Clone the repository: 
 ```
-git clone https://github.com/SoftwareAG/cumulocity-demo-widget-plugin.git
+git clone https://github.com/SoftwareAG/cumulocity-datapoints-charting-widget-plugin.git
 ```
 2. Change directory: 
 ```
-cd cumulocity-demo-widget-plugin
+cd cumulocity-datapoints-charting-widget-plugin
 ```
 3. Install the dependencies: 
 ```

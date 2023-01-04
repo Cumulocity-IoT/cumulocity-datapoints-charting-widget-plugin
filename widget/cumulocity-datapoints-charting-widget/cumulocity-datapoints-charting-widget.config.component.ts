@@ -15,22 +15,27 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
  */
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { WidgetHelper } from "./widget-helper";
 import { RawListItem, WidgetConfig } from "./widget-config";
 import { IResultList, IManagedObject, IdReference, IResult, IFetchResponse } from "@c8y/client";
 import { FetchClient, InventoryService } from '@c8y/ngx-components/api';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, from, Observable } from 'rxjs';
 import { deleteDB } from 'idb';
 import * as moment from "moment";
 import { AlertService } from '@c8y/ngx-components';
 import { get, set, has } from 'lodash';
-
+import { FormBuilder } from '@angular/forms';
+import { SELECTION_MODEL_FACTORY } from '@ng-select/ng-select';
+import { DefaultSelectionModelFactory } from './selection-model';
 
 @Component({
     selector: "cumulocity-datapoints-charting-widget-config-component",
     templateUrl: "./cumulocity-datapoints-charting-widget.config.component.html",
-    styleUrls: ["./cumulocity-datapoints-charting-widget.config.component.css"]
+    styleUrls: ['../../node_modules/@ng-select/ng-select/themes/default.theme.css','./cumulocity-datapoints-charting-widget.config.component.css'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [ FormBuilder,{ provide: SELECTION_MODEL_FACTORY, useValue: DefaultSelectionModelFactory }],
 })
 export class CumulocityDatapointsChartingWidgetConfig implements OnInit, OnDestroy {
     //
@@ -47,10 +52,6 @@ export class CumulocityDatapointsChartingWidgetConfig implements OnInit, OnDestr
     //
     public rawDevices: BehaviorSubject<RawListItem[]>;
     public supportedSeries: BehaviorSubject<RawListItem[]>;
-
-    //rawDevices: RawListItem[];
-    //supportedSeries: RawListItem[];
-
     selectedSeries: string;
 
     /**
@@ -123,7 +124,6 @@ export class CumulocityDatapointsChartingWidgetConfig implements OnInit, OnDestr
             name: "*",
         };
 
-        //const { data, res, paging } = await
         return this.inventory.listQueryDevices(query, filter);
     }
 
@@ -182,22 +182,10 @@ export class CumulocityDatapointsChartingWidgetConfig implements OnInit, OnDestr
  * @returns observable for the devices/groups we have retrieved
  */
     getDeviceDropdownList$(): Observable<RawListItem[]> {
-        // let ddList = [];
-        // if (this.rawDevices && this.rawDevices.length > 0) {
-        //     ddList = this.rawDevices.map((item, index) => {
-        //         return { id: index, text: item.text };
-        //     });
-        // }
         return this.rawDevices;
     }
 
     getSupportedSeries$(): Observable<RawListItem[]> {
-        // let ddList = [];
-        // if (this.rawDevices && this.rawDevices.length > 0) {
-        //     ddList = this.rawDevices.map((item, index) => {
-        //         return { id: index, text: item.text };
-        //     });
-        // }
         return this.supportedSeries;
     }
 
