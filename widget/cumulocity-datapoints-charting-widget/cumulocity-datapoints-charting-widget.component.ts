@@ -16,7 +16,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @format
  */
 
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';

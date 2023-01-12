@@ -32,10 +32,10 @@ import { DefaultSelectionModelFactory } from './selection-model';
 @Component({
     selector: "cumulocity-datapoints-charting-widget-config-component",
     templateUrl: "./cumulocity-datapoints-charting-widget.config.component.html",
-    styleUrls: ['../../node_modules/@ng-select/ng-select/themes/default.theme.css','./cumulocity-datapoints-charting-widget.config.component.css'],
+    styleUrls: ['../../node_modules/@ng-select/ng-select/themes/default.theme.css', './cumulocity-datapoints-charting-widget.config.component.css'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [ FormBuilder,{ provide: SELECTION_MODEL_FACTORY, useValue: DefaultSelectionModelFactory }],
+    providers: [FormBuilder, { provide: SELECTION_MODEL_FACTORY, useValue: DefaultSelectionModelFactory }],
 })
 export class CumulocityDatapointsChartingWidgetConfig implements OnInit, OnDestroy {
     //
@@ -170,7 +170,7 @@ export class CumulocityDatapointsChartingWidgetConfig implements OnInit, OnDestr
         return this.inventory.detail(id);
     }
 
-    async fetchSeries(id: string | number): Promise<string[]> {
+    async fetchSeries(id: string | number): Promise<string[]> {
         let resp: IFetchResponse = await this.fetchclient.fetch("/inventory/managedObjects/" + id + "/supportedSeries");
         let body = await resp.json();
         return body.c8y_SupportedSeries;
@@ -222,9 +222,9 @@ export class CumulocityDatapointsChartingWidgetConfig implements OnInit, OnDestr
         if (result.res.status === 200) {
             do {
                 result.data.forEach((mo) => {
-                   if (has(mo, "c8y_IsAsset")) {
+                    if (has(mo, "c8y_IsAsset")) {
                         retrieved.push(mo);
-                   }
+                    }
                 });
                 if (result.paging.nextPage) {
                     result = await result.paging.next();

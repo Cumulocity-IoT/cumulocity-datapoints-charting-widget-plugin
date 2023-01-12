@@ -1,11 +1,10 @@
-<div class="cumulocity-datapoints-charting-widget-container"
-     *ngIf="verifyConfig() else error"
-     style="justify-content: center;">
+<div class="cumulocity-datapoints-charting-widget-container" *ngIf="verifyConfig() else error"
+    style="justify-content: center;">
 
     <ng-container *ngIf="!widgetHelper.getChartConfig().multivariateplot">
         <div class="d-flex" style="flex-wrap: wrap;">
             <button style="color:#1776BF;" type="button" class="button" (click)="refresh()"><i
-                      [c8yIcon]="'refresh'"></i></button>
+                    [c8yIcon]="'refresh'"></i></button>
         </div>
 
     </ng-container>
@@ -18,20 +17,14 @@
                                 widgetHelper.getChartConfig().getChartType() == 'pie' || 
                                 widgetHelper.getChartConfig().getChartType() == 'radar' || 
                                 widgetHelper.getChartConfig().getChartType() == 'doughnut' else normal">
-                    <canvas #graph baseChart
-                            [datasets]="chartData"
-                            [options]="chartOptions"
-                            [chartType]="widgetHelper.getChartConfig().getChartType()"
-                            [labels]="chartLabels"
-                            [legend]="chartLegend" style="width:100%;height:90%;">
+                    <canvas #graph baseChart [datasets]="chartData" [options]="chartOptions"
+                        [chartType]="widgetHelper.getChartConfig().getChartType()" [labels]="chartLabels"
+                        [legend]="chartLegend" style="width:100%;height:90%;">
                     </canvas>
                 </ng-container>
                 <ng-template #normal>
-                    <canvas #graph baseChart
-                            [datasets]="chartData"
-                            [options]="chartOptions"
-                            [chartType]="widgetHelper.getChartConfig().getChartType()"
-                            style="width:100%;height:90%;">
+                    <canvas #graph baseChart [datasets]="chartData" [options]="chartOptions"
+                        [chartType]="widgetHelper.getChartConfig().getChartType()" style="width:100%;height:90%;">
                     </canvas>
                 </ng-template>
 

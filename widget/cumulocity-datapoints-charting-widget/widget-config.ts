@@ -138,7 +138,7 @@ export interface RawListItem {
      * Sometimes its a string used to access attributes of an object.
      * This leads to a high risk of issues!
      */
-    id: any 
+    id: any
     text: string;
     format?: string;
     isGroup?: boolean;

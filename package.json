@@ -1,7 +1,7 @@
 {
   "name": "cumulocity-datapoints-charting-widget-plugin",
-  "version": "1.0.1-beta",
-  "description": "This is the Cumulocity module federation plugin. This plugin is to create charts showing data from one or more devices. You can create many chart types including line, spline, bar, radar, scatter and bubble.",
+  "version": "1.0.0-beta",
+  "description": "The Cumulocity Datapoints Charting Widget allows you to create charts showing data from one or more devices. You can create many chart types including line, spline, bar, radar, scatter and bubble.",
   "scripts": {
     "start": "c8ycli server --env.beta=true",
     "build": "c8ycli build --env.mode=production",
@@ -11,7 +11,7 @@
     "postbuild": " gulp bundle"
   },
   "keywords": [],
-  "author": "Sheethal J R- Software AG, Global Presales",
+  "author": "Software AG, Global Presales",
   "license": "Apache-2.0",
   "dependencies": {
     "@angular/animations": "14.0.6",
@@ -63,17 +63,16 @@
     "html-loader": "4.1.0",
     "jest": "^28.1.3",
     "jest-preset-angular": "^12.2.0",
-    "ng-packagr": "^9.1.5",
     "style-loader": "3.3.1",
     "typescript": "4.7.4"
   },
   "c8y": {
     "application": {
       "name": "Datapoints Charting Widget Plugin",
-      "description": "Cumulocity Datapoints Charting Runtime Widget Plugin with module federation",
+      "description": "The Cumulocity Datapoints Charting Widget allows you to create charts showing data from one or more devices. You can create many chart types including line, spline, bar, radar, scatter and bubble.",
       "contextPath": "cumulocity-datapoints-charting",
       "key": "cumulocity-datapoints-charting-application-key",
-      "globalTitle": "Cumulocity Datapoints Charting Widget Plugin with Module Federation",
+      "globalTitle": "The Cumulocity Datapoints Charting Widget allows you to create charts showing data from one or more devices. You can create many chart types including line, spline, bar, radar, scatter and bubble.",
       "tabsHorizontal": true,
       "isPackage": true,
       "noAppSwitcher": true,
@@ -84,7 +83,7 @@
           "name": "Datapoints Charting Widget Plugin",
           "module": "CumulocityDatapointsChartingWidgetModule",
           "path": "./widget/cumulocity-datapoints-charting-widget/cumulocity-datapoints-charting-widget.module.ts",
-          "description": "Widget for displaying realtime measurement data in graphs (written by Software AG Global Pre-sales)"
+          "description": "The Cumulocity Datapoints Charting Widget allows you to create charts showing data from one or more devices. You can create many chart types including line, spline, bar, radar, scatter and bubble."
         }
       ],
       "remotes": {
