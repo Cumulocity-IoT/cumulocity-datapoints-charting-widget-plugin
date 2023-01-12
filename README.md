@@ -1,4 +1,4 @@
-# Cumulocity Datapoint Charting Plugin [<img width="35" src="https://user-images.githubusercontent.com/67993842/97668428-f360cc80-1aa7-11eb-8801-da578bda4334.png"/>](https://github.com/SoftwareAG/cumulocity-datapoints-charting-widget-plugin/releases/download/1.0.1-beta/cumulocity-datapoints-charting-1.0.1-beta.zip)
+# Cumulocity Datapoint Charting Plugin [<img width="35" src="https://user-images.githubusercontent.com/32765455/211497905-561e9197-18b9-43d5-a023-071d3635f4eb.png"/>](https://github.com/SoftwareAG/cumulocity-datapoints-charting-widget-plugin/releases/download/1.0.1-beta/cumulocity-datapoints-charting-1.0.1-beta.zip)
 
 This Cumulocity Datapoint Charting Widget Plugin is the Cumulocity module federation plugin created using c8ycli. This plugin can be used in Application Builder or Cockpit. This plugin is to create charts showing data from one or more devices. You can create many chart types including line, spline, bar, radar, scatter and bubble.
 
@@ -8,7 +8,7 @@ This Cumulocity Datapoint Charting Widget Plugin is the Cumulocity module federa
 
 |APPLICATION BUILDER | CUMULOCITY | Datapoint Charting WIDGET PLUGIN  |
 |--------------------|------------|-----------------------------------|
-| 2.0.x(coming soon) | >= 1016.x.x| 1.x.x                              |
+| 2.x.x(coming soon) | >= 1016.x.x| 1.x.x                             |
 
 
 ## Prerequisites:
@@ -49,9 +49,27 @@ The Datapoint Charting Widget Plugin currently supports the following chart type
 
 ## Installation
 
-### Runtime Deployment?
+### Runtime Widget Deployment?
 
 This Cumulocity Datapoint Charting Widget Plugin supports runtime deployment. Download the [Runtime Binary](https://github.com/SoftwareAG/cumulocity-datapoints-charting-widget-plugin/releases/download/1.0.1-beta/cumulocity-datapoints-charting-1.0.1-beta.zip).
+
+## QuickStart
+
+This guide will teach you how to add widget in your existing or new dashboard.
+
+1. Open your application from App Switcher
+
+2. Add new dashboard or navigate to existing dashboard
+
+3. Click `Add Widget`
+
+4. Search for `Datapoints Charting`
+
+5. Select `Target Assets or Devices`
+
+7. Click `Save`
+
+Congratulations! Datapoints Charting Widget is configured.
 
 ## User guide
 
@@ -159,44 +177,10 @@ The above chart is a basic line chart, but you can use the ability to plot data 
 -   bubble (x,y,r) r = diameter of plotted point
     ![series](/images/bubble.png)
 
-## Build Instructions
-
-**Note:** It is only necessary to follow these instructions if you are modifying/extending this widget, otherwise see the [Installation Guide](#Installation).
-
-**Requirements:**
-* Git
-* NodeJS (release builds are currently built with `v14.18.0`)
-* NPM (Included with NodeJS)
-
-**Instructions**
-1. Clone the repository: 
-```
-git clone https://github.com/SoftwareAG/cumulocity-datapoints-charting-widget-plugin.git
-```
-2. Change directory: 
-```
-cd cumulocity-datapoints-charting-widget-plugin
-```
-3. Install the dependencies: 
-```
-npm install
-```
-4. (Optional) Local development server: 
-```
-npm start -- --shell cockpit
-```
-5. Build the app: 
-```
-npm run build
-```
-6. Deploy the app: 
-```
-npm run deploy
-```
 
 
 ------------------------------
 
-These tools are provided as-is and without warranty or support. They do not constitute part of the Software AG product suite. Users are free to use, fork and modify them, subject to the license agreement. While Software AG welcomes contributions, we cannot guarantee to include every contribution in the master project.
+This widget is provided as-is and without warranty or support. They do not constitute part of the Software AG product suite. Users are free to use, fork and modify them, subject to the license agreement. While Software AG welcomes contributions, we cannot guarantee to include every contribution in the master project.
 _____________________
 For more information you can Ask a Question in the [TECH Community Forums](https://tech.forums.softwareag.com/tag/Cumulocity-IoT).
