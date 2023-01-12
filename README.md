@@ -51,7 +51,7 @@ The Datapoint Charting Widget Plugin currently supports the following chart type
 
 ### Runtime Widget Deployment?
 
-This Cumulocity Datapoint Charting Widget Plugin supports runtime deployment. Download the [Runtime Binary](https://github.com/SoftwareAG/cumulocity-datapoints-charting-widget-plugin/releases/download/1.0.1-beta/cumulocity-datapoints-charting-1.0.1-beta.zip).
+This Cumulocity Datapoint Charting Widget Plugin supports runtime deployment. Download the [Runtime Binary](https://github.com/SoftwareAG/cumulocity-datapoints-charting-widget-plugin/releases/download/1.0.1-beta/cumulocity-datapoints-charting-1.0.1-beta.zip) and install via Administrations(Beta mode) --> Ecosystems --> Applications --> Packages .
 
 ## QuickStart
 
@@ -63,13 +63,13 @@ This guide will teach you how to add widget in your existing or new dashboard.
 
 3. Click `Add Widget`
 
-4. Search for `Datapoints Charting`
+4. Search for `Datapoint Charting`
 
 5. Select `Target Assets or Devices`
 
 7. Click `Save`
 
-Congratulations! Datapoints Charting Widget is configured.
+Congratulations! Datapoint Charting Widget is configured.
 
 ## User guide
 
