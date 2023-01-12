@@ -1,4 +1,4 @@
-# Cumulocity Datapoint Charting Plugin [<img width="35" src="https://user-images.githubusercontent.com/32765455/211497905-561e9197-18b9-43d5-a023-071d3635f4eb.png"/>](https://github.com/SoftwareAG/cumulocity-datapoints-charting-widget-plugin/releases/download/1.0.1-beta/cumulocity-datapoints-charting-1.0.1-beta.zip)
+# Cumulocity Datapoint Charting Plugin [<img width="35" src="https://user-images.githubusercontent.com/32765455/211497905-561e9197-18b9-43d5-a023-071d3635f4eb.png"/>](https://github.com/SoftwareAG/cumulocity-datapoints-charting-widget-plugin/releases/download/1.0.0beta/cumulocity-datapoints-charting-1.0.0beta.zip)
 
 This Cumulocity Datapoint Charting Widget Plugin is the Cumulocity module federation plugin created using c8ycli. This plugin can be used in Application Builder or Cockpit. This plugin is to create charts showing data from one or more devices. You can create many chart types including line, spline, bar, radar, scatter and bubble.
 
@@ -51,7 +51,7 @@ The Datapoint Charting Widget Plugin currently supports the following chart type
 
 ### Runtime Widget Deployment?
 
-This Cumulocity Datapoint Charting Widget Plugin supports runtime deployment. Download the [Runtime Binary](https://github.com/SoftwareAG/cumulocity-datapoints-charting-widget-plugin/releases/download/1.0.1-beta/cumulocity-datapoints-charting-1.0.1-beta.zip) and install via Administrations(Beta mode) --> Ecosystems --> Applications --> Packages .
+This Cumulocity Datapoint Charting Widget Plugin supports runtime deployment. Download the [Runtime Binary](https://github.com/SoftwareAG/cumulocity-datapoints-charting-widget-plugin/releases/download/1.0.0-beta/cumulocity-datapoints-charting-1.0.0-beta.zip) and install via Administrations(Beta mode) --> Ecosystems --> Applications --> Packages .
 
 ## QuickStart
 
