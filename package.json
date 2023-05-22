@@ -1,16 +1,20 @@
 {
   "name": "cumulocity-datapoints-charting-widget-plugin",
-  "version": "1.0.0-beta",
+  "version": "1.0.0",
   "description": "The Cumulocity Datapoints Charting Widget allows you to create charts showing data from one or more devices. You can create many chart types including line, spline, bar, radar, scatter and bubble.",
   "scripts": {
-    "start": "c8ycli server --env.beta=true",
+    "start": "c8ycli server",
     "build": "c8ycli build --env.mode=production",
     "deploy": "c8ycli deploy",
     "postinstall": "ngcc",
     "prebuild": " gulp clean",
     "postbuild": " gulp bundle"
   },
-  "keywords": [],
+  "keywords": [
+    "Cumulocity",
+    "Plugin",
+    "Widget"
+  ],
   "author": "Software AG, Global Presales",
   "license": "Apache-2.0",
   "dependencies": {
@@ -68,10 +72,10 @@
   },
   "c8y": {
     "application": {
-      "name": "Datapoints Charting Widget Plugin",
+      "name": "Datapoints Charting Widget",
       "description": "The Cumulocity Datapoints Charting Widget allows you to create charts showing data from one or more devices. You can create many chart types including line, spline, bar, radar, scatter and bubble.",
-      "contextPath": "cumulocity-datapoints-charting",
-      "key": "cumulocity-datapoints-charting-application-key",
+      "contextPath": "sag-ps-pkg-datapoints-charting",
+      "key": "sag-ps-pkg-datapoints-charting-application-key",
       "globalTitle": "The Cumulocity Datapoints Charting Widget allows you to create charts showing data from one or more devices. You can create many chart types including line, spline, bar, radar, scatter and bubble.",
       "tabsHorizontal": true,
       "isPackage": true,
@@ -90,8 +94,85 @@
         "widget-plugin": [
           "CumulocityDatapointsChartingWidgetModule"
         ]
+      },
+    
+    "copy": [
+      {
+        "from": "images/line_vs_spline.png",
+        "to": "images/line_vs_spline.png"
+      },
+      {
+        "from": "images/horz_vs_vertbar.png",
+        "to": "images/horz_vs_vertbar.png"
+      },
+      {
+        "from": "images/buckets.png",
+        "to": "images/buckets.png"
+      },
+      {
+        "from": "images/options.png",
+        "to": "images/options.png"
+      },
+      {
+        "from": "images/add_widget.png",
+        "to": "images/add_widget.png"
+      },
+      {
+        "from": "images/devandmeas.png",
+        "to": "images/devandmeas.png"
+      },
+      {
+        "from": "images/groupseries.png",
+        "to": "images/groupseries.png"
+      },
+      {
+        "from": "images/global.gif",
+        "to": "images/global.gif"
+      },
+      {
+        "from": "images/series.gif",
+        "to": "images/series.gif"
+      },
+      {
+        "from": "images/advanced.gif",
+        "to": "images/advanced.gif"
+      },
+      {
+        "from": "images/pie.gif",
+        "to": "images/pie.gif"
+      },
+      {
+        "from": "images/value_buckets.png",
+        "to": "images/value_buckets.png"
+      },
+      {
+        "from": "images/group.png",
+        "to": "images/group.png"
+      },
+      {
+        "from": "images/multivariate.gif",
+        "to": "images/multivariate.gif"
+      },
+      {
+        "from": "images/radar.png",
+        "to": "images/radar.png"
+      },
+      {
+        "from": "images/scatter.png",
+        "to": "images/scatter.png"
+      },
+      {
+        "from": "images/bubble.png",
+        "to": "images/bubble.png"
+      },
+    
+      
+      {
+        "from": "LICENSE",
+        "to": "LICENSE.txt"
       }
-    },
+    ]
+  },
     "cli": {}
   },
   "browserslist": [
