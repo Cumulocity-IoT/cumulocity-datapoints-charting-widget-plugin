@@ -8,8 +8,8 @@
         <h4 translate>Please select one or more Devices and Measurements</h4>
         <div class="dataPointrow form-group">
 
-
-            <div class="col-lg-6" *ngIf="this.widgetHelper.getDeviceTarget() else selector">
+          
+            <div class="col-lg-6" *ngIf="this.widgetHelper.getWidgetConfig().selectedDevices[0] else selector">
                 <label class="dataPointlabel-with-help" for="deviceSelector" class="dataPointlabel-with-help">
                     {{widgetHelper.getWidgetConfig().selectedDevices[0]?.text}}
                     <span class="dataPointhelp-icon">

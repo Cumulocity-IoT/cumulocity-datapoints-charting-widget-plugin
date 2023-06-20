@@ -53,6 +53,7 @@ export class CumulocityDatapointsChartingWidgetConfig implements OnInit, OnDestr
     public rawDevices: BehaviorSubject<RawListItem[]>;
     public supportedSeries: BehaviorSubject<RawListItem[]>;
     selectedSeries: string;
+    
 
     /**
      * Constructs config object and injects inventory/fetch
@@ -78,6 +79,7 @@ export class CumulocityDatapointsChartingWidgetConfig implements OnInit, OnDestr
             if (res.status >= 200 && res.status < 300) {
                 let v: RawListItem = { id: data.id, text: data.name, isGroup: has(data, 'c8y_IsDeviceGroup') };
                 this.widgetHelper.getWidgetConfig().selectedDevices = [v];
+               
             } else {
                 this.alertService.danger(`There was an issue getting device details, please refresh the page.`);
                 return;
@@ -105,6 +107,7 @@ export class CumulocityDatapointsChartingWidgetConfig implements OnInit, OnDestr
 
     onConfigChanged(): void {
         this.widgetHelper.setWidgetConfig(this.config); //propgate changes 
+       
     }
 
 
@@ -114,6 +117,7 @@ export class CumulocityDatapointsChartingWidgetConfig implements OnInit, OnDestr
     //
     // Helper methods
     //
+   
     async getDeviceList(): Promise<IResultList<IManagedObject>> {
         const filter: object = {
             pageSize: 2000,
