@@ -19,16 +19,17 @@
  * @format
  */
 
-import { CoreModule, HOOK_COMPONENTS } from "@c8y/ngx-components";
+import { CoreModule, DynamicDatapointsResolver, HOOK_COMPONENTS } from "@c8y/ngx-components";
 import { CumulocityDatapointsChartingWidgetConfig } from "./cumulocity-datapoints-charting-widget.config.component";
 import { CumulocityDatapointsChartingWidget } from "./cumulocity-datapoints-charting-widget.component";
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 import { NgSelectModule } from "@ng-select/ng-select";
 import { ChartsModule } from "ng2-charts";
+import { DatapointSelectorModule } from '@c8y/ngx-components/datapoint-selector';
 
 @NgModule({
-    imports: [CoreModule, HttpClientModule, NgSelectModule, ChartsModule],
+    imports: [CoreModule, HttpClientModule, NgSelectModule, ChartsModule, DatapointSelectorModule],
     declarations: [CumulocityDatapointsChartingWidget, CumulocityDatapointsChartingWidgetConfig],
     entryComponents: [CumulocityDatapointsChartingWidget, CumulocityDatapointsChartingWidgetConfig],
     providers: [
@@ -42,6 +43,9 @@ import { ChartsModule } from "ng2-charts";
                 component: CumulocityDatapointsChartingWidget,
                 configComponent: CumulocityDatapointsChartingWidgetConfig,
                 previewImage: require("./assets/img-preview.png"),
+                resolve: {
+                    datapoints: DynamicDatapointsResolver,
+                },
                 data: {
                     ng1: {
                         options: { noDeviceTarget: true, noNewWidgets: false, deviceTargetNotRequired: true, groupsSelectable: true },

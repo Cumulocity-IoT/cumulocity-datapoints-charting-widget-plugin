@@ -4,67 +4,26 @@
     <!-- 
         Device and Measurement selection
     -->
+    <div class="row">
+        <div class="form-group col-sm-12 ">
+            <form [formGroup]="formGroup" >
+                <c8y-datapoint-selection-list
+                [minActiveCount]="1"
+                [defaultFormOptions]="datapointSelectDefaultFormOptions"
+                [config]="datapointSelectionConfig"
+                formControlName="datapoints"
+                name="datapoints"
+                ></c8y-datapoint-selection-list>
+            </form>
+        </div>
+    </div>
     <div class="dataPointConfigSection">
-        <h4 translate>Please select one or more Devices and Measurements</h4>
+        <!-- <h4 translate>Please select one or more Devices and Measurements</h4> -->
         <div class="dataPointrow form-group">
 
           
-            <div class="col-lg-6" *ngIf="this.widgetHelper.getWidgetConfig().selectedDevices[0] else selector">
-                <label class="dataPointlabel-with-help" for="deviceSelector" class="dataPointlabel-with-help">
-                    {{widgetHelper.getWidgetConfig().selectedDevices[0]?.text}}
-                    <span class="dataPointhelp-icon">
-                        <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip" title="Group device Id.">
-                    </span>
-                </label>
-            </div>
-            <ng-template #selector>
-                <div class="col-lg-6">
-                    <label class="dataPointlabel-with-help" for="deviceSelector" class="dataPointlabel-with-help"
-                        translate>Select device
-                        <span class="dataPointhelp-icon">
-                            <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
-                                title="Select one or more devices for the chart.">
-                        </span>
-                    </label>
-                    <ng-select [items]="getDeviceDropdownList$() | async" [multiple]="true" bindLabel="text"
-                        [closeOnSelect]="false" [(ngModel)]="widgetHelper.getWidgetConfig().selectedDevices"
-                        (ngModelChange)="updateConfig()">
-                        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
-                            <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.text}}
-                        </ng-template>
-                    </ng-select>
-                </div>
-            </ng-template>
-
-            <!--
-                Hide until device(s) selected to prompt a flow
-             -->
-            <ng-container *ngIf="
-                    widgetHelper.getWidgetConfig().selectedDevices.length > 0
-                ">
-                <div class="col-lg-6">
-                    <label class="dataPointlabel-with-help" for="measurementSelector" class="dataPointlabel-with-help"
-                        translate>Select
-                        series and fragment(s)
-                        <span class="dataPointhelp-icon">
-                            <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
-                                title="Select one or more data fragments for the chart.">
-                        </span>
-                    </label>
-                    <ng-select [items]="getSupportedSeries$() | async" [multiple]="true" bindLabel="text"
-                        [closeOnSelect]="false" [(ngModel)]="widgetHelper.getWidgetConfig().selectedMeasurements"
-                        (ngModelChange)="updateSelectedMeasurements()">
-                        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
-                            <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.text}}
-                        </ng-template>
-                    </ng-select>
-                </div>
-            </ng-container>
         </div>
-        <ng-container *ngIf="
-            widgetHelper.getWidgetConfig().selectedDevices.length > 0 &&
-            widgetHelper.getWidgetConfig().selectedMeasurements.length > 0
-        ">
+        <ng-container *ngIf="selectedMeasurements.length > 0">
             <div class="dataPointrow form-group">
                 <div class="col-lg-4">
                     <label class="dataPointlabel-with-help" translate>Volume of data points</label>
@@ -141,10 +100,7 @@
         Once there are measurements we can select a chart and set globals
         the overall chart type is fixed currently but could in the future be mixed
     -->
-    <ng-container *ngIf="
-            widgetHelper.getWidgetConfig().selectedDevices.length > 0 &&
-            widgetHelper.getWidgetConfig().selectedMeasurements.length > 0
-        ">
+    <ng-container *ngIf="selectedMeasurements.length > 0">
         <!-- 
             Chart Type & global settings
         -->
