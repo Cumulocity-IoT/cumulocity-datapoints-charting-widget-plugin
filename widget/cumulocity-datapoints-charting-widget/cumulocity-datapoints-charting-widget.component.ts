@@ -58,8 +58,8 @@ export class CumulocityDatapointsChartingWidget implements OnDestroy, OnInit {
      * subscribed and so must be released on destroy
      */
     seriesData: { [key: string]: MeasurementList; };
-    subscription: { [key: string]: Object; } = {}; //record per device subscriptions
-
+    // subscription: { [key: string]: Object; } = {}; //record per device subscriptions
+    subscription: any = {};
     /**
      * ng2-charts data members referenced by the element
      */
