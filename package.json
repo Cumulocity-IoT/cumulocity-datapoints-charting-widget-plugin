@@ -4,7 +4,7 @@
   "description": "The Cumulocity Datapoints Charting Widget allows you to create charts showing data from one or more devices. You can create many chart types including line, spline, bar, radar, scatter and bubble.",
   "scripts": {
     "start": "c8ycli server",
-    "build": "c8ycli build --env.mode=development",
+    "build": "c8ycli build --env.mode=production",
     "deploy": "c8ycli deploy",
     "postinstall": "ngcc",
     "prebuild": " gulp clean",
