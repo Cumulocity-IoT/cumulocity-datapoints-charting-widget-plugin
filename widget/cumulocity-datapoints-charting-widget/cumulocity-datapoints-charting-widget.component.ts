@@ -18,10 +18,10 @@
  *
  */
 
-import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Realtime } from "@c8y/client";
+import { Component, Input, OnDestroy, OnInit, Optional, ViewChild } from '@angular/core';
+import { InventoryService, Realtime } from "@c8y/client";
 import { WidgetHelper } from "./widget-helper";
-import { DataObject, MeasurementOptions, WidgetConfig } from "./widget-config";
+import { DataObject, MeasurementOptions, RawListItem, WidgetConfig } from "./widget-config";
 import { BaseChartDirective, Label, ThemeService } from 'ng2-charts';
 import { MeasurementHelper, MeasurementList } from './widget-measurements';
 import { ChartDataSets, ChartOptions, ChartPoint, PositionType } from 'chart.js';
@@ -30,6 +30,7 @@ import { DatePipe } from '@angular/common';
 import { get, has } from "lodash";
 import boll from "bollinger-bands";
 import * as moment from "moment";
+import { ContextDashboardComponent } from '@c8y/ngx-components/context-dashboard';
 
 @Component({
     selector: "lib-cumulocity-datapoints-charting-widget",
@@ -58,8 +59,8 @@ export class CumulocityDatapointsChartingWidget implements OnDestroy, OnInit {
      * subscribed and so must be released on destroy
      */
     seriesData: { [key: string]: MeasurementList; };
-    subscription: { [key: string]: Object; } = {}; //record per device subscriptions
-
+    // subscription: { [key: string]: Object; } = {}; //record per device subscriptions
+    subscription: any = {};
     /**
      * ng2-charts data members referenced by the element
      */
@@ -98,12 +99,18 @@ export class CumulocityDatapointsChartingWidget implements OnDestroy, OnInit {
      */
     widgetHelper: WidgetHelper<WidgetConfig>;
     measurementHelper: MeasurementHelper;
-    @Input() config: WidgetConfig;
+    @Input() config: any;
+
+    selectedMeasurements: RawListItem[]=[];
+    selectedDevices: RawListItem[]=[];
+    deviceID: any;
 
     constructor(
         private measurementService: MeasurementService,
         public datepipe: DatePipe,
-        private realtimeService: Realtime
+        private realtimeService: Realtime,
+        @Optional() private dashboardContextComponent: ContextDashboardComponent,
+        private inventory: InventoryService
     ) {
         this.widgetHelper = new WidgetHelper(this.config, WidgetConfig); //default access through here
         this.measurementHelper = new MeasurementHelper();
@@ -114,6 +121,38 @@ export class CumulocityDatapointsChartingWidget implements OnDestroy, OnInit {
      * Lifecycle
      */
     async ngOnInit(): Promise<void> {
+
+    if (this.dashboardContextComponent?.dashboard?.deviceType /*&& !this.config.device*/) {
+        const context = this.dashboardContextComponent.context;
+        if (context?.id) {
+          const { id } = context;
+          this.config.device = (await this.inventory.detail(id)).data;
+          this.deviceID= this.config.device.id;
+        }
+        this.config.datapoints.filter(dp => dp.__active === true).forEach(dp => {
+            dp.__target.id = this.deviceID;
+            dp.__target.name = this.config.device.name;
+        });
+        await this.getSelectedMeasurementsFromDatapoints();
+    }
+
+    //calling getSelectedMeasurementsFromDatapoints() in Appbuilder, only if there is a change in device
+    let isDeviceSame=false;
+    for(let element of this.config.datapoints){
+        isDeviceSame = this.config.customwidgetdata.selectedDevices.some((device)=>{
+            if(device.id === element.__target.id && device.text === element.__target.name){
+                return true;
+            }
+            return false;
+        });
+        if(!isDeviceSame){
+            break;
+        }
+    };
+    if(!isDeviceSame){
+        await this.getSelectedMeasurementsFromDatapoints();
+    }
+
         this.widgetHelper = new WidgetHelper(this.config, WidgetConfig); //use config
 
         //Clean up
@@ -250,6 +289,74 @@ export class CumulocityDatapointsChartingWidget implements OnDestroy, OnInit {
         this.chartData = localChartData; //replace
         this.dataLoaded = true; //update
         this.widgetHelper.getWidgetConfig().changed = false;
+    }
+
+    async getSelectedMeasurementsFromDatapoints(){
+        
+        this.selectedMeasurements=[];
+        this.selectedDevices=[];
+        this.config.datapoints?.forEach((element,i) => {
+            if(element.__active==true){
+                const selectedMeasurement:RawListItem = {
+                    id: element.__target.id+"."+element.fragment+"."+element.series,
+                    text: element.fragment+"."+element.series+"("+element.__target.name+")"
+                }
+                this.selectedMeasurements.push(selectedMeasurement);
+                const selectedDevice : RawListItem ={
+                    id: element.__target.id,
+                    text: element.__target.name
+                }
+                if(this.selectedDevices.length>0){
+                    let flag=false;
+                    for(let i=0;i<this.selectedDevices.length;i++){
+                        if(element.__target.id == this.selectedDevices[i].id){
+                            flag=true;
+                            break;
+                        }
+                    }
+                    if(flag==false){
+                        this.selectedDevices.push(selectedDevice);
+                    }
+                }
+                else{
+                    this.selectedDevices.push(selectedDevice);
+                }
+                
+            }
+            
+        });
+        this.updateSelectedMeasurements();
+    }
+
+    async updateSelectedMeasurements() {
+        const config = this.widgetHelper.getChartConfig();
+        config.clearSeries(this.selectedMeasurements);
+        this.selectedMeasurements.forEach((v, i) => {
+            config.addSeries(
+                    [v.id.toString()],
+                    v.text,
+                    config.colorList[i],
+                    config.avgColorList[i],
+                    v.groupname
+                );
+            //add a series for the group - this will be controlled via a flag as well...
+            if (v.isGroup && !(v.groupname in config.series)) {
+                config.addSeries(
+                    [v.id.toString()], //create and add the source device
+                    v.groupname,
+                    config.colorList[i],
+                    config.avgColorList[i],
+                    v.groupname,
+                    true
+                );
+            } else if (v.isGroup && v.groupname in config.series) {
+                //add this device if
+                config.series[v.groupname].idList.push(v.id.toString());
+            }
+        });
+        this.config.customwidgetdata.selectedDevices=this.selectedDevices;
+        this.config.customwidgetdata.selectedMeasurements=this.selectedMeasurements;
+        this.config.customwidgetdata.chart.series=config.series;
     }
 
     /**

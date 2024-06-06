@@ -99,7 +99,7 @@ export class CumulocityDatapointsChartingWidgetConfig implements OnInit, OnDestr
     async getSelectedMeasurementsFromDatapoints(){
         this.selectedMeasurements=[];
         this.selectedDevices=[];
-        this.config.datapoints.forEach((element,i) => {
+        this.config.datapoints?.forEach((element,i) => {
             if(element.__active==true){
                 const selectedMeasurement:RawListItem = {
                     id: element.__target.id+"."+element.fragment+"."+element.series,
