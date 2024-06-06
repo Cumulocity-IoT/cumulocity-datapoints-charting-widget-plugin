@@ -133,8 +133,25 @@ export class CumulocityDatapointsChartingWidget implements OnDestroy, OnInit {
             dp.__target.id = this.deviceID;
             dp.__target.name = this.config.device.name;
         });
+        await this.getSelectedMeasurementsFromDatapoints();
     }
-    await this.getSelectedMeasurementsFromDatapoints();
+
+    //calling getSelectedMeasurementsFromDatapoints() in Appbuilder, only if there is a change in device
+    let isDeviceSame=false;
+    for(let element of this.config.datapoints){
+        isDeviceSame = this.config.customwidgetdata.selectedDevices.some((device)=>{
+            if(device.id === element.__target.id && device.text === element.__target.name){
+                return true;
+            }
+            return false;
+        });
+        if(!isDeviceSame){
+            break;
+        }
+    };
+    if(!isDeviceSame){
+        await this.getSelectedMeasurementsFromDatapoints();
+    }
 
         this.widgetHelper = new WidgetHelper(this.config, WidgetConfig); //use config
 
