@@ -7,11 +7,12 @@ This Cumulocity Datapoint Charting Widget Plugin is the Cumulocity module federa
 
 |APPLICATION BUILDER&nbsp;|&nbsp;CUMULOCITY&nbsp;|&nbsp;Datapoint Charting Widget Plugin&nbsp;|
 |--------------------|------------|-----------------------------------|
-| 2.x.x              | >= 1016.x.x| 1.x.x                             |
+| 2.0.x              | >=1018.0.0 <1019.0.0   | 1.2.x        |
+| 2.0.x              | >=1016.0.0 <1018.0.0   | 1.1.x        |
 
 
 ## Prerequisites:
-   Cumulocity c8ycli >=1016.x.x
+   Cumulocity c8ycli >=1018.x.x
    
 ## Features
 
@@ -44,7 +45,7 @@ The Datapoint Charting Widget Plugin currently supports the following chart type
 *   show and hide data by clicking legend items, tool tips
 *   configurable label format for times
 
-![Options](/images/options.png)
+![Options](/images/config-gif.gif)
 
 ## Installation
 
@@ -64,7 +65,7 @@ This guide will teach you how to add widget in your existing or new dashboard.
 
 4. Search for `Datapoint Charting`
 
-5. Select `Target Assets or Devices`
+5. Select `Datapoints`
 
 7. Click `Save`
 
@@ -88,20 +89,9 @@ The widget configuration page contains a number of configuration attributes.
 
 **Device and Measurement Configuration** section
 
--   **Device** : Select one or more devices, once you do you will then be able to select measurements. Deselect options in the dropdown or click the 'x' to remove them.
-    -   The list contains devices, as well as groups defined in the cumulocity application.
-    -   When choosing a group (Such as Laboratory in the picture below) The measurements will be labeled to indicate that they are part of that group.
+-   **Datapoints**: Select one or more datapoints from the datapoints selector field.
 
-![devices and measurements](/images/devandmeas.png)
-
--   You will now be able to choose to plot an extra series for the group by checking a box shown at the top of the list in the config
-
-![devices and measurements](/images/groupseries.png)
-
--   **Measurement** : Select the measurement fragment and series from the dropdown. You can deselect them in a similar way to the devices.
-
-    -   define the range of data points to use by changing the Amount, Unit
-    -   define the accuracy and display of data values by changing the number of decimal points to show.
+![datapoints](/images/datapoints.png)
 
 -   **Group measurements within time unit**: This allows you to show raw data, or average or sum measurements them when received within the unit of the range you chose (E.G average values by minute).
 
@@ -112,9 +102,9 @@ The widget configuration page contains a number of configuration attributes.
 
 -   **Global Chart Options** : Here you can choose things like chart type and display options for axes and the legend. _Note_ the global section will only appear once you have selected the devices and measurements.
 
-![devices and measurements](/images/global.gif)
+![global chart setting](/images/global-chart-setting.png)
 
-**NOTE**: Once the **Target Assets or Devices** and **Measurement** information has been populated, you can click the 'Save' button to configure the widget with the default settings
+**NOTE**: Once the **Datapoints** information has been populated, you can click the 'Save' button to configure the widget with the default settings
 
 -   **Series Settings** : Below the global settings you will see a row for each measurement series you selected. By clicking on the row you will expand options that can be set per series. Depending on the chart type there may be further options which can be exposed by clicking the show advanced options checkbox.
 
