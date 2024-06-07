@@ -162,6 +162,18 @@
         {
           "from": "LICENSE",
           "to": "LICENSE.txt"
+        },
+        {
+          "from": "images/config-gif.gif",
+          "to": "images/config-gif.gif"
+        },
+        {
+          "from": "images/datapoints.png",
+          "to": "images/datapoints.png"
+        },
+        {
+          "from": "images/global-chart-setting.png",
+          "to": "images/global-chart-setting.png"
         }
       ]
     },
