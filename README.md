@@ -1,15 +1,14 @@
-# Cumulocity Datapoint Charting Plugin [<img width="35" src="https://user-images.githubusercontent.com/32765455/211497905-561e9197-18b9-43d5-a023-071d3635f4eb.png"/>](https://github.com/SoftwareAG/cumulocity-datapoints-charting-widget-plugin/releases/download/1.1.0/sag-ps-pkg-datapoints-charting-1.1.0.zip)
+# Cumulocity Datapoint Charting Plugin [<img width="35" src="https://user-images.githubusercontent.com/32765455/211497905-561e9197-18b9-43d5-a023-071d3635f4eb.png"/>](https://github.com/SoftwareAG/cumulocity-datapoints-charting-widget-plugin/releases/download/1.2.0/sag-ps-pkg-datapoints-charting-1.2.0.zip)
 
 This Cumulocity Datapoint Charting Widget Plugin is the Cumulocity module federation plugin created using c8ycli. This plugin can be used in Application Builder or Cockpit. This plugin is to create charts showing data from one or more devices. You can create many chart types including line, spline, bar, radar, scatter and bubble.
 
 
 ### Please choose Demo Widget release based on Cumulocity/Application builder version:
 
-|APPLICATION BUILDER&nbsp;|&nbsp;CUMULOCITY&nbsp;|&nbsp;Datapoint Charting Widget Plugin&nbsp;|
-|--------------------|------------|-----------------------------------|
-| 2.0.x              | >=1018.0.0 <1019.0.0   | 1.2.x        |
-| 2.0.x              | >=1016.0.0 <1018.0.0   | 1.1.x        |
-
+|APPLICATION BUILDER&nbsp;|&nbsp;CUMULOCITY VERSION&nbsp;|&nbsp;DATAPOINT CHARTING WIDGET PLUGIN&nbsp;|
+|-------------------------|------------------------------|--------------------------------------------|
+| 2.0.x                   | >=1018.0 < 1019.0            | 1.2.x                                      |
+| 2.0.x                   | >=1016.0 < 1018.0            | 1.1.x                                      |
 
 ## Prerequisites:
    Cumulocity c8ycli >=1018.x.x
@@ -51,7 +50,7 @@ The Datapoint Charting Widget Plugin currently supports the following chart type
 
 ### Runtime Widget Deployment?
 
-This Cumulocity Datapoint Charting Widget Plugin supports runtime deployment. Download the [Runtime Binary](https://github.com/SoftwareAG/cumulocity-datapoints-charting-widget-plugin/releases/download/1.1.0/sag-ps-pkg-datapoints-charting-1.1.0.zip) and install via Administrations --> Ecosystems --> Applications --> Packages .
+This Cumulocity Datapoint Charting Widget Plugin supports runtime deployment. Download the [Runtime Binary](https://github.com/SoftwareAG/cumulocity-datapoints-charting-widget-plugin/releases/download/1.2.0/sag-ps-pkg-datapoints-charting-1.2.0.zip) and install via Administrations --> Ecosystems --> Applications --> Packages .
 
 ## QuickStart
 
